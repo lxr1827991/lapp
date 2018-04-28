@@ -25,7 +25,13 @@
     	maxElementsOnDisk="0"
         maxElementsInMemory="2000"  
         eternal="true" 
-        overflowToDisk="true"/> 
+        overflowToDisk="true"/>
+        
+     <cache name="appSessionAlias"  
+    	maxElementsOnDisk="0"
+        maxElementsInMemory="2000"  
+        eternal="true" 
+        overflowToDisk="true"/>     
     
 
 </ehcache>

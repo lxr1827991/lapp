@@ -1,5 +1,7 @@
 package com.park.api.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -65,31 +67,15 @@ public class AuthenticationController extends BaseController{
 
 	}
 	
-	@RequestMapping("test2")
+	@RequestMapping("user/test2")
 	@ResponseBody
 	public Object test2(String vcode) {
 		
-		System.out.println(AppUtils.getAppInterface().getAppid());
 		
-		AppSession session = AppSessionUtils.getSession();
-		Object c = session.getAttr("code");
-		if(c==null) {c="1";
-		}else {
-			c+="1";
-			
-		}
-		
-		if (c.toString().length()>2) {
-			AppSessionUtils.getSession().setForever();
-		}
-		
-		AppSessionUtils.getSession().putAttr("code", c);
+		AppSession sessions = AppSessionUtils.getSessionByAlias("lxr");
 		
 		
-		JsonResult jsonResult = JsonResult.getSuccessResult(AppSessionUtils.getSession().getAttr("code"));
-		jsonResult.setSid(AppSessionUtils.getSession().getId());
-		
-		return jsonResult;
+		return JsonResult.getSuccessResult();
 
 	}
 	
